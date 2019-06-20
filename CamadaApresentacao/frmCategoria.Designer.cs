@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -41,9 +42,25 @@
             this.dataLista = new System.Windows.Forms.DataGridView();
             this.chkDeletar = new System.Windows.Forms.CheckBox();
             this.Deletar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.errorIcone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ttMensagem = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIcone)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -86,6 +103,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -111,6 +129,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(127, 22);
             this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnBuscar
             // 
@@ -121,6 +140,7 @@
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnDeletar
             // 
@@ -183,6 +203,131 @@
             this.Deletar.Name = "Deletar";
             this.Deletar.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnCancelar);
+            this.groupBox1.Controls.Add(this.btnNovo);
+            this.groupBox1.Controls.Add(this.btnEditar);
+            this.groupBox1.Controls.Add(this.btnSalvar);
+            this.groupBox1.Controls.Add(this.txtDescricao);
+            this.groupBox1.Controls.Add(this.txtNome);
+            this.groupBox1.Controls.Add(this.txtIdCategoria);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(595, 242);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Categorias";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.label3.Location = new System.Drawing.Point(30, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Código:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.label4.Location = new System.Drawing.Point(30, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 15);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Nome:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.label5.Location = new System.Drawing.Point(19, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 15);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Descrição:";
+            // 
+            // txtIdCategoria
+            // 
+            this.txtIdCategoria.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.txtIdCategoria.Location = new System.Drawing.Point(82, 24);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.Size = new System.Drawing.Size(100, 22);
+            this.txtIdCategoria.TabIndex = 3;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.txtNome.Location = new System.Drawing.Point(82, 67);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(100, 22);
+            this.txtNome.TabIndex = 4;
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.txtDescricao.Location = new System.Drawing.Point(82, 105);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDescricao.Size = new System.Drawing.Size(283, 79);
+            this.txtDescricao.TabIndex = 5;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.btnSalvar.Location = new System.Drawing.Point(107, 200);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.btnEditar.Location = new System.Drawing.Point(198, 200);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 7;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.btnNovo.Location = new System.Drawing.Point(11, 200);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 8;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Eras Medium ITC", 9.75F);
+            this.btnCancelar.Location = new System.Drawing.Point(290, 200);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // errorIcone
+            // 
+            this.errorIcone.ContainerControl = this;
+            // 
+            // ttMensagem
+            // 
+            this.ttMensagem.IsBalloon = true;
+            // 
             // frmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,10 +338,15 @@
             this.Controls.Add(this.label1);
             this.Name = "frmCategoria";
             this.Text = "Controle de Categorias";
+            this.Load += new System.EventHandler(this.frmCategoria_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIcone)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +367,18 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtIdCategoria;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider errorIcone;
+        private System.Windows.Forms.ToolTip ttMensagem;
     }
 }

@@ -8,6 +8,6 @@ namespace CamadaDados
 {
     class Conexao
     {
-        public static string Cn = "Data Source = LUCAS; Initial Catalog = dbcomercio; Integrated Security=true";
+        public static string Cn = "Data Source = ADM-PC\\LUCAS; Initial Catalog = dbcomercio; Integrated Security=true";
     }
 }

@@ -219,8 +219,7 @@ namespace CamadaDados
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "spbuscar_nome";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
-                sqlDat.Fill(DtResultado);
+            
 
                 SqlParameter ParTextoBuscar = new SqlParameter();
                 ParTextoBuscar.ParameterName = "@textobuscar";
@@ -228,6 +227,9 @@ namespace CamadaDados
                 ParTextoBuscar.Size = 50;
                 ParTextoBuscar.Value = Categoria.TextoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
+
+                SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
+                sqlDat.Fill(DtResultado);
             }
             catch (Exception ex)
             {
