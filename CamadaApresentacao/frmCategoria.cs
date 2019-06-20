@@ -80,7 +80,7 @@ namespace CamadaApresentacao
         private void OcultarColunas()
         {
             this.dataLista.Columns[0].Visible = false;
-            this.dataLista.Columns[1].Visible = false;
+            this.dataLista.Columns[1].Visible = true;
 
         }
 
@@ -183,6 +183,98 @@ namespace CamadaApresentacao
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void dataLista_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdCategoria.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idcategoria"].Value);
+            this.txtNome.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["nome"].Value);
+            this.txtDescricao.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["descricao"].Value);
+            this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (this.txtIdCategoria.Text.Equals(""))
+            {
+                this.MensagemErro("Selecione um registro para inserir");
+            }
+            else
+            {
+                this.eEditar = true;
+                this.botoes();
+                this.Habilitar(true);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.eNovo = false;
+            this.eEditar = false;
+            this.botoes();
+            this.Habilitar(false);
+            this.Limpar();
+        }
+
+        private void chkDeletar_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkDeletar.Checked)
+            {
+                this.dataLista.Columns[0].Visible = true;
+
+            }
+            else
+            {
+                this.dataLista.Columns[0].Visible = false;
+            }
+        }
+
+        private void dataLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataLista.Columns["Deletar"].Index)
+            {
+                DataGridViewCheckBoxCell ChkDeletar = (DataGridViewCheckBoxCell)dataLista.Rows[e.RowIndex].Cells["Deletar"];
+                ChkDeletar.Value= !Convert.ToBoolean(ChkDeletar.Value);
+            }
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcao;
+                Opcao = MessageBox.Show("Realmente deseja apagar o(s) registro(s) selecionado(s)?", "Sistema de comércio", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if(Opcao== DialogResult.OK)
+                {
+                    string Codigo;
+                    string Resp = "";
+
+                    foreach(DataGridViewRow row in dataLista.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            Codigo = Convert.ToString(row.Cells[1].Value);
+                            Resp = NCategoria.Excluir(Convert.ToInt32(Codigo));
+
+                            if(Resp.Equals("OK"))
+                            {
+                                this.MensagemOK("Regitro excluido com Sucesso!");
+                            }
+                            else
+                            {
+                                this.MensagemErro(Resp);
+                            }
+
+                        }
+                    }
+                    this.Mostrar();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            } 
         }
     }
 }
